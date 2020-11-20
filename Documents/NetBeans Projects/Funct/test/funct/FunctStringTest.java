@@ -39,7 +39,7 @@ public class FunctStringTest {
      */
     @Test
     public void testToRigth() {
-        assertEquals(funct.toRight("Test", -1),  "T");
+        assertEquals(funct.toRight("Test", -1),  "Test");
         //assertEquals(funct.getEspacos(-1),  "");
     }
 }
