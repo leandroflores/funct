@@ -39,7 +39,35 @@ public class FunctStringTest {
      */
     @Test
     public void testToRigth() {
-        assertEquals(funct.toRight("Test", -1),  "Test");
-        //assertEquals(funct.getEspacos(-1),  "");
+        assertEquals(funct.toRight("String", -1), "String");
+        assertEquals(funct.toRight("String", 1),  "String");
+        assertEquals(funct.toRight("String", 6),  "String");
+        assertEquals(funct.toRight("String", 7),  " String");
+        assertEquals(funct.toRight("String", 10), "    String");
+    }
+    
+    /**
+     * Metodo responsavel por testar o metodo toLeft(String string, int size).
+     */
+    @Test
+    public void testToLeft() {
+        assertEquals(funct.toLeft("String", -1), "String");
+        assertEquals(funct.toLeft("String", 1),  "String");
+        assertEquals(funct.toLeft("String", 6),  "String");
+        assertEquals(funct.toLeft("String", 7),  "String ");
+        assertEquals(funct.toLeft("String", 10), "String    ");
+    }
+    
+    /**
+     * Metodo responsavel por testar o metodo toCenter(String string, int size).
+     */
+    @Test
+    public void testToCenter() {
+        assertEquals(funct.toCenter("String", -1), "String");
+        assertEquals(funct.toCenter("String", 1),  "String");
+        assertEquals(funct.toCenter("String", 6),  "String");
+        assertEquals(funct.toCenter("String", 7),  "String ");
+        assertEquals(funct.toCenter("String", 10), "  String  ");
+        assertEquals(funct.toCenter("Strin",  10), "  Strin   ");
     }
 }

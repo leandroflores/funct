@@ -1,5 +1,7 @@
 package funct;
 
+import java.util.StringTokenizer;
+
 /**
  * <p>Classe de Biblioteca <b>FunctString</b>.</p>
  * <p>Classe responsavel pelas operacoes envolvendo <b>String</b>.</p>
@@ -19,15 +21,54 @@ public class FunctString {
     
     /**
      * Metodo responsavel por retornar uma String alinhada a direita.
-     * @param  string String inicial.
+     * @param  string Cadeia de caracteres inicial.
      * @param  size Tamanho desejado.
      * @return String alinhada a direita.
      */
-    public String toRight(String string, int size) {
+    public String toRight(String string, Integer size) {
         if (string.length() > size) 
             return string;
-        String right  = this.getEspacos(size - string.length());
-               right += string;
-        return right;
+        return this.getEspacos(size - string.length()) + string;
+    }
+    
+    /**
+     * Metodo responsavel por retornar uma String alinhada a esquerda.
+     * @param  string Cadeia de caracteres inicial.
+     * @param  size Tamanho desejado.
+     * @return String alinhada a esquerda.
+     */
+    public String toLeft(String string, Integer size) {
+        if (string.length() > size) 
+            return string;
+        return string + this.getEspacos(size - string.length());
+    }
+    
+    /**
+     * Metodo responsavel por retornar uma String centralizada.
+     * @param  string Cadeia de caracteres inicial.
+     * @param  size Tamanho desejado.
+     * @return String centralizada.
+     */
+    public String toCenter(String string, Integer size) {
+        if (string.length() > size) 
+            return string;
+        Integer diff   = size - string.length();
+        String  spaces = this.getEspacos(diff / 2);
+        String  extra  = diff % 2 == 0 ? "" : " ";
+        return  spaces + string + spaces + extra;
+    }
+    
+    /**
+     * Metodo responsavel por retornar o numero de vezes que um char aparece em uma String.
+     * @param  string String a ser percorrida.
+     * @param  character Caracter a ser contado.
+     * @return Quantidade de Char na String.
+     */
+    public Long countChar(String string, char character) {
+        return string.codePoints().filter(current -> current == character).count();
+    }
+    
+    public static void main(String[] args) {
+        System.out.println(new FunctString().countChar("  A  A ", 'A'));
     }
 }
