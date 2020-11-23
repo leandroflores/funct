@@ -28,6 +28,25 @@ public class FunctArray {
     }
     
     /**
+     * Metodo responsavel por retornar a Posicao do Maior Elemento de um Array.
+     * @param  array Array.
+     * @return Posicao do Maior Elemento de um Array.
+     */
+    public Integer positionOfMax(Integer[] array) { 
+        if (array.length == 0)
+            return null;
+        Integer max = Integer.MIN_VALUE;
+        Integer pos = 0;
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] > max) {
+                max = array[i];
+                pos = i;
+            }
+        }
+        return  pos;
+    }
+    
+    /**
      * Metodo responsavel por retornar o Menor Elemento de um Array.
      * @param  array Array.
      * @return Menor Elemento de um Array.
@@ -39,6 +58,25 @@ public class FunctArray {
         for (Integer current : array)
                 min = current < min ? current : min;
         return  min;
+    }
+    
+    /**
+     * Metodo responsavel por retornar a Posicao do Menor Elemento de um Array.
+     * @param  array Array.
+     * @return Posicao do Menor Elemento de um Array.
+     */
+    public Integer positionOfMin(Integer[] array) { 
+        if (array.length == 0)
+            return null;
+        Integer min = Integer.MAX_VALUE;
+        Integer pos = 0;
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] < min) {
+                min = array[i];
+                pos = i;
+            }
+        }
+        return  pos;
     }
     
     /**
@@ -60,10 +98,10 @@ public class FunctArray {
      * @param  array Array.
      * @return Media Simples dos Elementos de um Array.
      */
-    public Integer avg(Integer[] array) { 
+    public Double avg(Integer[] array) {
         if (array.length == 0)
             return null;
-        return sum(array) / array.length;
+        return new Double (sum(array)) / new Double(array.length);
     }
     
     /**
@@ -71,7 +109,7 @@ public class FunctArray {
      * @param  array Array.
      * @param  value Valor para Incrementar.
      */
-    public void increment(Integer[] array, Integer value) { 
+    public void increment(Integer[] array, Integer value) {
         for (int i = 0; i < array.length; i++)
             array[i] += value;
     }
@@ -137,6 +175,22 @@ public class FunctArray {
     public void add(Integer[] array, Integer element) {
         array = Arrays.copyOf(array, array.length + 1);
         array[array.length - 1] = element;
+    }
+    
+    /**
+     * Metodo responsavel por remover um Elemento no Array.
+     * @param  array Array.
+     * @param  element Elemento a ser Removido.
+     * @return Nova Array.
+     */
+    public Integer[] remove(Integer[] array, Integer element) {
+        Integer new_[] = new Integer[array.length - frequency(array, element)];
+        Integer index  = 0;
+        for (Integer current : array) {
+            if (current.equals(element))
+                new_[index++] = current;
+        }
+        return  new_;
     }
     
     /**
