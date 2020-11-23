@@ -215,14 +215,4 @@ public class FunctMatrix {
                 frequency += funct.frequency(array, element);
         return  frequency;
     }
-    
-    public static void main(String[] args) {
-        Integer[][] matrix_0 = {};
-        Integer[][] matrix_1 = {{0}};
-        Integer[][] matrix_2 = {{1}, {5}};
-        Integer[][] matrix_3 = {{1, 7}, {5}};
-        Integer[][] matrix_4 = {{0, 0}, {0, 0}};
-        
-        System.out.println(new FunctMatrix().positionOfMin(matrix_3));
-    }
 }
