@@ -123,6 +123,50 @@ public class FunctMatrix {
     }
     
     /**
+     * Metodo responsavel por retornar o Indice da Linha do Maior Elemento de uma Matriz.
+     * @param  matrix Matriz.
+     * @return Indice da Linha do Maior Elemento de uma Matriz.
+     */
+    public Integer getLineIndexMax(Integer[][] matrix) {
+        String position = positionOfMax(matrix);
+        if (position != null)
+            return Integer.parseInt(position.substring(0, position.indexOf(".") - 1));
+        return -1;
+    }
+    
+    /**
+     * Metodo responsavel por retornar a Linha do Maior Elemento de uma Matriz.
+     * @param  matrix Matriz.
+     * @return Linha do Maior Elemento de uma Matriz.
+     */
+    public Integer[] getLineMax(Integer[][] matrix) {
+        Integer index = getLineIndexMax(matrix);
+        return  index > -1 ? matrix[index] : null;
+    }
+    
+    /**
+     * Metodo responsavel por retornar o Indice da Coluna do Maior Elemento de uma Matriz.
+     * @param  matrix Matriz.
+     * @return Indice da Linha do Maior Elemento de uma Matriz.
+     */
+    public Integer getColumnIndexMax(Integer[][] matrix) {
+        String position = positionOfMax(matrix);
+        if (position != null)
+            return Integer.parseInt(position.substring(position.indexOf(".") + 1));
+        return -1;
+    }
+    
+    /**
+     * Metodo responsavel por retornar a Coluna do Maior Elemento de uma Matriz.
+     * @param  matrix Matriz.
+     * @return Coluna do Maior Elemento de uma Matriz.
+     */
+    public Integer[] getColumnMax(Integer[][] matrix) {
+        Integer index = getColumnIndexMax(matrix);
+        return  index > -1 ? getColumn(matrix, index) : null;
+    }
+    
+    /**
      * Metodo responsavel por retornar o Menor Elemento de uma Matriz.
      * @param  matrix Matriz.
      * @return Menor Elemento de uma Matriz.
@@ -158,6 +202,50 @@ public class FunctMatrix {
             }
         }
         return  pos;
+    }
+    
+    /**
+     * Metodo responsavel por retornar o Indice da Linha do Menor Elemento de uma Matriz.
+     * @param  matrix Matriz.
+     * @return Indice da Linha do Menor Elemento de uma Matriz.
+     */
+    public Integer getLineIndexMin(Integer[][] matrix) {
+        String position = positionOfMin(matrix);
+        if (position != null)
+            return Integer.parseInt(position.substring(0, position.indexOf(".") - 1));
+        return -1;
+    }
+    
+    /**
+     * Metodo responsavel por retornar a Linha do Menor Elemento de uma Matriz.
+     * @param  matrix Matriz.
+     * @return Linha do Menor Elemento de uma Matriz.
+     */
+    public Integer[] getLineMin(Integer[][] matrix) {
+        Integer index = getLineIndexMin(matrix);
+        return  index > -1 ? matrix[index] : null;
+    }
+    
+    /**
+     * Metodo responsavel por retornar o Indice da Coluna do Menor Elemento de uma Matriz.
+     * @param  matrix Matriz.
+     * @return Indice da Linha do Menor Elemento de uma Matriz.
+     */
+    public Integer getColumnIndexMin(Integer[][] matrix) {
+        String position = positionOfMin(matrix);
+        if (position != null)
+            return Integer.parseInt(position.substring(position.indexOf(".") + 1));
+        return -1;
+    }
+    
+    /**
+     * Metodo responsavel por retornar a Coluna do Menor Elemento de uma Matriz.
+     * @param  matrix Matriz.
+     * @return Coluna do Menor Elemento de uma Matriz.
+     */
+    public Integer[] getColumnMin(Integer[][] matrix) {
+        Integer index = getColumnIndexMin(matrix);
+        return  index > -1 ? getColumn(matrix, index) : null;
     }
     
     /**
@@ -214,5 +302,113 @@ public class FunctMatrix {
         for (Integer[] array : matrix)
                 frequency += funct.frequency(array, element);
         return  frequency;
+    }
+    
+    /**
+     * Metodo responsavel por retornar a Diagonal Principal de uma Matriz.
+     * @param  matrix Matriz.
+     * @return Diagonal Principal da Matriz.
+     */
+    public Integer[] getPrincipalDiagonal(Integer[][] matrix) {
+        Integer[] diagonal = new Integer[matrix.length];
+        for (int i = 0; i < matrix.length; i++)
+                  diagonal[i] = matrix[i][i];
+        return    diagonal;
+    }
+    
+    /**
+     * Metodo responsavel por retornar a Diagonal Secundaria de uma Matriz.
+     * @param  matrix Matriz.
+     * @return Diagonal Secundaria da Matriz.
+     */
+    public Integer[] getSecondaryDiagonal(Integer[][] matrix) {
+        Integer[] diagonal = new Integer[matrix.length];
+        Integer   column   = matrix.length - 1;
+        for (int i = 0; i < matrix.length; i++)
+                  diagonal[i] = matrix[i][column--];
+        return    diagonal;
+    }
+    
+    /**
+     * Metodo responsavel por retornar a Transposta de uma Matriz.
+     * @param  matrix Matriz.
+     * @return Transposta da Matriz.
+     */
+    public Integer[][] getTransposeMatrix(Integer[][] matrix) {
+        Integer[][] transpose = new Integer[matrix[0].length][matrix.length];
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[0].length; j++) {
+                transpose[j][i] = matrix[i][j];
+            }
+        }
+        return  transpose;
+    }
+    
+    /**
+     * Metodo responsavel por retornar a Coluna de uma Matriz.
+     * @param  matrix Matriz.
+     * @param  index Indice da Coluna.
+     * @return Coluna da Matriz.
+     */
+    public Integer[] getColumn(Integer[][] matrix, Integer index) {
+        Integer[] column = new Integer[matrix.length];
+        for (int i = 0; i < matrix.length; i++)
+               column[i] = matrix[i][index];
+        return column;
+    }
+    
+    /**
+     * Metodo responsavel por retornar o Valor da Determinante de uma Matriz.
+     * @param  matrix Matriz.
+     * @return Valor da Determinante de uma Matriz.
+     */
+    public Integer getDeterminant(Integer[][] matrix) {
+        if (matrix.length == 0)
+            return 0;
+        Integer size = matrix.length - 1;
+        Integer aux[][][] = new Integer[size + 1][][];
+                aux[size] = matrix;
+        for (int i = 0; i < size; i++)
+            aux[i] = new Integer[i + 1][i + 1];
+        return getDeterminant(aux, size);
+    }
+    
+    /**
+     * Metodo responsavel por retornar o Valor da Determinante de uma Matriz.
+     * @param  aux  Matriz Auxiliar.
+     * @param  size Tamanho da Matriz.
+     * @return Valor da Determinante de uma Matriz.
+     */
+    private Integer getDeterminant(Integer[][][] aux, Integer size) {
+        if (size == 0)
+            return aux[0][0][0];
+        Integer signal = 1;
+        Integer determinant;
+        
+        for (int i = 0; i < size; i++)
+            System.arraycopy(aux[size][i], 0, aux[size - 1][i], 0, size);
+        
+        determinant = aux[size][size][size] * getDeterminant(aux, size - 1);
+        
+        for (int i = size - 1; i >= 0; i--) {
+            System.arraycopy(aux[size][i + 1], 0, aux[size - 1][i], 0, size);
+            signal       = -signal;
+            determinant +=  signal * aux[size][i][size] * getDeterminant(aux, size - 1);
+        }
+        return determinant;
+    }
+    
+    /**
+     * Metodo responsavel por retornar a Matriz em uma String.
+     * @param  matrix Matriz.
+     * @return Matriz em uma String.
+     */
+    public String getString(Integer[][] matrix) {
+        if (isEmpty(matrix))
+            return "[]";
+        String string  = "[" + funct.getString(matrix[0]);
+        for (int i = 1; i < matrix.length; i++)
+               string += ",\n " + funct.getString(matrix[i]);
+        return string + "]";
     }
 }
