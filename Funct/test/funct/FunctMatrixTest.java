@@ -274,6 +274,18 @@ public class FunctMatrixTest {
     }
     
     /**
+     * Metodo responsavel por testar o metodo getDeterminant(Integer[][] matrix) : Integer.
+     */
+    @Test
+    public void testGetDeterminant() {
+        assertEquals(funct.getDeterminant(new Integer[][]{}), null);
+        assertEquals(funct.getDeterminant(new Integer[][]{{-8}}), new Integer(-8));
+        assertEquals(funct.getDeterminant(new Integer[][]{{1}, {0}}), null);
+        assertEquals(funct.getDeterminant(new Integer[][]{{1, 2}, {3, 1}}), new Integer(-5));
+        assertEquals(funct.getDeterminant(new Integer[][]{{2, 2}, {3, 4}}), new Integer(2));
+    }
+    
+    /**
      * Metodo responsavel por testar o metodo getString(Integer[][] matrix) : String.
      */
     @Test

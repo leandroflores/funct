@@ -369,8 +369,8 @@ public class FunctMatrix {
      * @return Valor da Determinante de uma Matriz.
      */
     public Integer getDeterminant(Integer[][] matrix) {
-        if (matrix.length == 0)
-            return 0;
+        if (isEmpty(matrix) || !isSquare(matrix))
+            return null;
         Integer size = matrix.length - 1;
         Integer aux[][][] = new Integer[size + 1][][];
                 aux[size] = matrix;
