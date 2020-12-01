@@ -23,7 +23,7 @@ public class FunctDateTest {
     }
 
     /**
-     * Metodo responsavel por testar o metodo getCurrentDate().
+     * Metodo responsavel por testar o metodo getCurrentDate() : Date.
      */
     @Test
     public void testGetCurrentDate() {
@@ -31,7 +31,7 @@ public class FunctDateTest {
     }
     
     /**
-     * Metodo responsavel por testar o metodo getCurrentTime().
+     * Metodo responsavel por testar o metodo getCurrentTime() : Time.
      */
     @Test
     public void testGetCurrentTime() {

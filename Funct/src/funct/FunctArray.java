@@ -84,9 +84,7 @@ public class FunctArray {
      * @param  array Array.
      * @return Soma dos Elementos de um Array.
      */
-    public Integer sum(Integer[] array) { 
-        if (array.length == 0)
-            return null;
+    public Integer sum(Integer[] array) {
         Integer sum  = 0;
         for (Integer current : array)
                 sum += current;
@@ -169,12 +167,14 @@ public class FunctArray {
     
     /**
      * Metodo responsavel por adicionar um Elemento no Array.
-     * @param array Array.
-     * @param element Novo Elemento.
+     * @param  array Array.
+     * @param  element Novo Elemento.
+     * @return Array como Novo Elemento.
      */
-    public void add(Integer[] array, Integer element) {
-        array = Arrays.copyOf(array, array.length + 1);
-        array[array.length - 1] = element;
+    public Integer[] add(Integer[] array, Integer element) {
+        Integer[] new_ = Arrays.copyOf(array, array.length + 1);
+                  new_[new_.length - 1] = element;
+        return    new_;
     }
     
     /**
@@ -187,10 +187,23 @@ public class FunctArray {
         Integer new_[] = new Integer[array.length - frequency(array, element)];
         Integer index  = 0;
         for (Integer current : array) {
-            if (current.equals(element))
+            if (!current.equals(element))
                 new_[index++] = current;
         }
         return  new_;
+    }
+    
+    /**
+     * Metodo responsavel por inverter a ordem dos Elementos de um Array.
+     * @param  array Array.
+     * @return Array com a ordem inversa dos elementos.
+     */
+    public Integer[] reverse(Integer[] array) {
+        Integer reverse[] = new Integer[array.length];
+        Integer index     = reverse.length - 1;
+        for (Integer current : array) 
+                reverse[index--] = current;
+        return  reverse;
     }
     
     /**
@@ -205,7 +218,7 @@ public class FunctArray {
      * Metodo responsavel por ordenar decrescentemente os Elementos de um Array.
      * @param array Array.
      */
-    public void reverse(Integer[] array) {
+    public void sortDesc(Integer[] array) {
         Arrays.sort(array, Collections.reverseOrder());
     }
     
@@ -215,6 +228,8 @@ public class FunctArray {
      * @return Array em uma String.
      */
     public String getString(Integer[] array) {
+        if (array.length == 0)
+            return "[]";
         String  string  = "[";
         Integer lastPos = array.length - 1;
         for (int i = 0; i < lastPos; i++)

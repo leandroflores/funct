@@ -50,7 +50,13 @@ public class FunctMatrix {
      * @return Matriz e vazia.
      */
     public boolean isEmpty(Integer[][] matrix) {
-        return matrix.length == 0;
+        if (matrix.length == 0)
+            return true;
+        for (Integer[] array : matrix) {
+            if (array.length > 0)
+                return false;
+        }
+        return true;
     }
     
     /**
@@ -89,8 +95,8 @@ public class FunctMatrix {
      * @param  matrix Matriz.
      * @return Maior Elemento de uma Matriz.
      */
-    public Integer max(Integer[][] matrix) { 
-        if (matrix.length == 0)
+    public Integer max(Integer[][] matrix) {
+        if (isEmpty(matrix))
             return null;
         Integer aux;
         Integer max = Integer.MIN_VALUE;
@@ -107,7 +113,7 @@ public class FunctMatrix {
      * @return Posicao do Maior Elemento de uma Matriz.
      */
     public String positionOfMax(Integer[][] matrix) { 
-        if (matrix.length == 0)
+    if (isEmpty(matrix))
             return null;
         String  pos = "";
         Integer max = Integer.MIN_VALUE;
@@ -130,7 +136,7 @@ public class FunctMatrix {
     public Integer getLineIndexMax(Integer[][] matrix) {
         String position = positionOfMax(matrix);
         if (position != null)
-            return Integer.parseInt(position.substring(0, position.indexOf(".") - 1));
+            return Integer.parseInt(position.substring(0, position.indexOf(".")));
         return -1;
     }
     
@@ -172,7 +178,7 @@ public class FunctMatrix {
      * @return Menor Elemento de uma Matriz.
      */
     public Integer min(Integer[][] matrix) { 
-        if (matrix.length == 0)
+        if (isEmpty(matrix))
             return null;
         Integer aux;
         Integer min = Integer.MAX_VALUE;
@@ -189,7 +195,7 @@ public class FunctMatrix {
      * @return Posicao do Menor Elemento de uma Matriz.
      */
     public String positionOfMin(Integer[][] matrix) { 
-        if (matrix.length == 0)
+        if (isEmpty(matrix))
             return null;
         String  pos = "";
         Integer min = Integer.MAX_VALUE;
@@ -212,7 +218,7 @@ public class FunctMatrix {
     public Integer getLineIndexMin(Integer[][] matrix) {
         String position = positionOfMin(matrix);
         if (position != null)
-            return Integer.parseInt(position.substring(0, position.indexOf(".") - 1));
+            return Integer.parseInt(position.substring(0, position.indexOf(".")));
         return -1;
     }
     
@@ -266,7 +272,7 @@ public class FunctMatrix {
      * @return Media Simples dos Elementos de uma Matriz.
      */
     public Double avg(Integer[][] matrix) {
-        if (matrix.length == 0)
+        if (isEmpty(matrix))
             return null;
         return new Double(sum(matrix)) / new Double(total(matrix));
     }
@@ -298,7 +304,7 @@ public class FunctMatrix {
      * @return Frequencia de um Elemento na Matriz.
      */
     public Integer frequency(Integer[][] matrix, Integer element) {
-        Integer frequency = 0;
+        Integer frequency  = 0;
         for (Integer[] array : matrix)
                 frequency += funct.frequency(array, element);
         return  frequency;
@@ -311,7 +317,7 @@ public class FunctMatrix {
      */
     public Integer[] getPrincipalDiagonal(Integer[][] matrix) {
         Integer[] diagonal = new Integer[matrix.length];
-        for (int i = 0; i < matrix.length; i++)
+        for (int i = 0; i < matrix.length; i++) 
                   diagonal[i] = matrix[i][i];
         return    diagonal;
     }
@@ -334,7 +340,7 @@ public class FunctMatrix {
      * @param  matrix Matriz.
      * @return Transposta da Matriz.
      */
-    public Integer[][] getTransposeMatrix(Integer[][] matrix) {
+    public Integer[][] getTranspose(Integer[][] matrix) {
         Integer[][] transpose = new Integer[matrix[0].length][matrix.length];
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[0].length; j++) {
@@ -404,7 +410,7 @@ public class FunctMatrix {
      * @return Matriz em uma String.
      */
     public String getString(Integer[][] matrix) {
-        if (isEmpty(matrix))
+        if (matrix.length == 0)
             return "[]";
         String string  = "[" + funct.getString(matrix[0]);
         for (int i = 1; i < matrix.length; i++)

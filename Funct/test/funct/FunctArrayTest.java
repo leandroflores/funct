@@ -73,8 +73,8 @@ public class FunctArrayTest {
      */
     @Test
     public void testSum() {
-        assertEquals(funct.sum(new Integer[]{}), null);
-        assertEquals(funct.sum(new Integer[]{-3}),    new Integer(-3));
+        assertEquals(funct.sum(new Integer[]{}), new Integer(0));
+        assertEquals(funct.sum(new Integer[]{-3}), new Integer(-3));
         assertEquals(funct.sum(new Integer[]{1, -1}), new Integer(0));
         assertEquals(funct.sum(new Integer[]{0, 1, -2}), new Integer(-1));
         assertEquals(funct.sum(new Integer[]{5, 0, 12}), new Integer(17));
@@ -237,38 +237,168 @@ public class FunctArrayTest {
      */
     @Test
     public void testAdd() {
-        assertArrayEquals(getAddCase0(), new Integer[]{});
-        assertArrayEquals(getAddCase1(), new Integer[]{0, 1});
-        assertArrayEquals(getAddCase2(), new Integer[]{-1, 0, 1});
+        assertArrayEquals(funct.add(new Integer[]{}, -1), new Integer[]{-1});
+        assertArrayEquals(funct.add(new Integer[]{0}, 1), new Integer[]{0, 1});
+        assertArrayEquals(funct.add(new Integer[]{-1, 0}, 1), new Integer[]{-1, 0, 1});
     }
     
     /**
-     * Metodo responsavel por retornar o Caso Base para o Teste do metodo add(Integer[] array, Integer element) : void.
-     * @return Caso Base para o Teste do metodo add.
+     * Metodo responsavel por testar o metodo remove(Integer[] array, Integer element) : Integer[].
      */
-    private Integer[] getAddCase0() {
+    @Test
+    public void testRemove() {
+        assertArrayEquals(funct.remove(new Integer[]{}, -1), new Integer[]{});
+        assertArrayEquals(funct.remove(new Integer[]{0}, 0), new Integer[]{});
+        assertArrayEquals(funct.remove(new Integer[]{0, 1}, 1), new Integer[]{0});
+        assertArrayEquals(funct.remove(new Integer[]{0, 1, 0}, 0),   new Integer[]{1});
+        assertArrayEquals(funct.remove(new Integer[]{-1, 0, 0}, -1), new Integer[]{0, 0});
+        assertArrayEquals(funct.remove(new Integer[]{2, 2, 2}, -2),  new Integer[]{2, 2, 2});
+    }
+    
+    /**
+     * Metodo responsavel por testar o metodo reverse(Integer[] array) : Integer[].
+     */
+    @Test
+    public void testReverse() {
+        assertArrayEquals(funct.reverse(new Integer[]{}),  new Integer[]{});
+        assertArrayEquals(funct.reverse(new Integer[]{1}), new Integer[]{1});
+        assertArrayEquals(funct.reverse(new Integer[]{0, 1}), new Integer[]{1, 0});
+        assertArrayEquals(funct.reverse(new Integer[]{1, 2, 3}), new Integer[]{3, 2, 1});
+        assertArrayEquals(funct.reverse(new Integer[]{1, 0, 1}), new Integer[]{1, 0, 1});
+    }
+    
+    /**
+     * Metodo responsavel por testar o metodo sort(Integer[] array) : void.
+     */
+    @Test
+    public void testSort() {
+        assertArrayEquals(getSortCase0(), new Integer[]{});
+        assertArrayEquals(getSortCase1(), new Integer[]{1});
+        assertArrayEquals(getSortCase2(), new Integer[]{1, 2});
+        assertArrayEquals(getSortCase3(), new Integer[]{0, 1, 2, 3});
+        assertArrayEquals(getSortCase4(), new Integer[]{1, 3, 5, 7});
+    }
+    
+    /**
+     * Metodo responsavel por retornar o Caso Base para o Teste do metodo sort(Integer[] array) : void.
+     * @return Caso Base para o Teste do metodo sort.
+     */
+    private Integer[] getSortCase0() {
         Integer array[] = new Integer[0];
-                funct.add(array, -1);
+                funct.sort(array);
         return  array;
     }
     
     /**
-     * Metodo responsavel por retornar o Caso 1 para o Teste do metodo add(Integer[] array, Integer element) : void.
-     * @return Caso 1 para o Teste do metodo add.
+     * Metodo responsavel por retornar o Caso 1 para o Teste do metodo sort(Integer[] array) : void.
+     * @return Caso 1 para o Teste do metodo sort.
      */
-    private Integer[] getAddCase1() {
-        Integer array[] = new Integer[]{0};
-                funct.add(array, 1);
+    private Integer[] getSortCase1() {
+        Integer array[] = new Integer[]{1};
+                funct.sort(array);
         return  array;
     }
     
     /**
-     * Metodo responsavel por retornar o Caso 2 para o Teste do metodo add(Integer[] array, Integer element) : void.
-     * @return Caso 2 para o Teste do metodo add.
+     * Metodo responsavel por retornar o Caso 2 para o Teste do metodo sort(Integer[] array) : void.
+     * @return Caso 2 para o Teste do metodo sort.
      */
-    private Integer[] getAddCase2() {
-        Integer array[] = new Integer[]{-1, 0};
-                funct.add(array, 1);
+    private Integer[] getSortCase2() {
+        Integer array[] = new Integer[]{1, 2};
+                funct.sort(array);
         return  array;
+    }
+    
+    /**
+     * Metodo responsavel por retornar o Caso 3 para o Teste do metodo sort(Integer[] array) : void.
+     * @return Caso 3 para o Teste do metodo sort.
+     */
+    private Integer[] getSortCase3() {
+        Integer array[] = new Integer[]{3, 0, 2, 1};
+                funct.sort(array);
+        return  array;
+    }
+    
+    /**
+     * Metodo responsavel por retornar o Caso 4 para o Teste do metodo sort(Integer[] array) : void.
+     * @return Caso 4 para o Teste do metodo sort.
+     */
+    private Integer[] getSortCase4() {
+        Integer array[] = new Integer[]{7, 5, 3, 1};
+                funct.sort(array);
+        return  array;
+    }
+    
+    /**
+     * Metodo responsavel por testar o metodo sortDesc(Integer[] array) : void.
+     */
+    @Test
+    public void testSortDesc() {
+        assertArrayEquals(getSortDescCase0(), new Integer[]{});
+        assertArrayEquals(getSortDescCase1(), new Integer[]{3});
+        assertArrayEquals(getSortDescCase2(), new Integer[]{2, 1});
+        assertArrayEquals(getSortDescCase3(), new Integer[]{3, 2, 1, 0});
+        assertArrayEquals(getSortDescCase4(), new Integer[]{7, 5, 3, 1});
+    }
+    
+    /**
+     * Metodo responsavel por retornar o Caso Base para o Teste do metodo sortDesc(Integer[] array) : void.
+     * @return Caso Base para o Teste do metodo sortDesc.
+     */
+    private Integer[] getSortDescCase0() {
+        Integer array[] = new Integer[0];
+                funct.sortDesc(array);
+        return  array;
+    }
+    
+    /**
+     * Metodo responsavel por retornar o Caso 1 para o Teste do metodo sortDesc(Integer[] array) : void.
+     * @return Caso 1 para o Teste do metodo sortDesc.
+     */
+    private Integer[] getSortDescCase1() {
+        Integer array[] = new Integer[]{3};
+                funct.sortDesc(array);
+        return  array;
+    }
+    
+    /**
+     * Metodo responsavel por retornar o Caso 2 para o Teste do metodo sortDesc(Integer[] array) : void.
+     * @return Caso 2 para o Teste do metodo sortDesc.
+     */
+    private Integer[] getSortDescCase2() {
+        Integer array[] = new Integer[]{2, 1};
+                funct.sortDesc(array);
+        return  array;
+    }
+    
+    /**
+     * Metodo responsavel por retornar o Caso 3 para o Teste do metodo sortDesc(Integer[] array) : void.
+     * @return Caso 3 para o Teste do metodo sortDesc.
+     */
+    private Integer[] getSortDescCase3() {
+        Integer array[] = new Integer[]{3, 0, 2, 1};
+                funct.sortDesc(array);
+        return  array;
+    }
+    
+    /**
+     * Metodo responsavel por retornar o Caso 4 para o Teste do metodo sortDesc(Integer[] array) : void.
+     * @return Caso 4 para o Teste do metodo sortDesc.
+     */
+    private Integer[] getSortDescCase4() {
+        Integer array[] = new Integer[]{1, 3, 5, 7};
+                funct.sortDesc(array);
+        return  array;
+    }
+    
+    /**
+     * Metodo responsavel por testar o metodo getString(Integer[] array) : String.
+     */
+    @Test
+    public void testGetString() {
+        assertEquals(funct.getString(new Integer[]{}),  "[]");
+        assertEquals(funct.getString(new Integer[]{0}), "[0]");
+        assertEquals(funct.getString(new Integer[]{-1, 3, 4}),  "[-1, 3, 4]");
+        assertEquals(funct.getString(new Integer[]{-1, 0, -1}), "[-1, 0, -1]");
     }
 }

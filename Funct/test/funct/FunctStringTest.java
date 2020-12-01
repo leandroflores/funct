@@ -21,7 +21,7 @@ public class FunctStringTest {
     }
 
     /**
-     * Metodo responsavel por testar o metodo getString(Character character, Integer size).
+     * Metodo responsavel por testar o metodo getString(Character character, Integer size) : String.
      */
     @Test
     public void testGetString() {
@@ -34,7 +34,7 @@ public class FunctStringTest {
     }
     
     /**
-     * Metodo responsavel por testar o metodo getEspacos(int size).
+     * Metodo responsavel por testar o metodo getEspacos(int size) : String.
      */
     @Test
     public void testGetEspacos() {
@@ -48,7 +48,7 @@ public class FunctStringTest {
     }
     
     /**
-     * Metodo responsavel por testar o metodo toRight(String string, int size).
+     * Metodo responsavel por testar o metodo toRight(String string, int size) : String.
      */
     @Test
     public void testToRigth() {
@@ -60,7 +60,7 @@ public class FunctStringTest {
     }
     
     /**
-     * Metodo responsavel por testar o metodo toLeft(String string, int size).
+     * Metodo responsavel por testar o metodo toLeft(String string, int size) : String.
      */
     @Test
     public void testToLeft() {
@@ -72,7 +72,7 @@ public class FunctStringTest {
     }
     
     /**
-     * Metodo responsavel por testar o metodo toCenter(String string, int size).
+     * Metodo responsavel por testar o metodo toCenter(String string, int size) : String.
      */
     @Test
     public void testToCenter() {
@@ -85,7 +85,7 @@ public class FunctStringTest {
     }
     
     /**
-     * Metodo responsavel por testar o metodo countChar(String string, char character).
+     * Metodo responsavel por testar o metodo countChar(String string, char character) : Long.
      */
     @Test
     public void testCountChar() {
@@ -98,7 +98,7 @@ public class FunctStringTest {
     }
     
     /**
-     * Metodo responsavel por testar o metodo reverse(String string).
+     * Metodo responsavel por testar o metodo reverse(String string) : String.
      */
     @Test
     public void testReverse() {
@@ -111,7 +111,7 @@ public class FunctStringTest {
     }
     
     /**
-     * Metodo responsavel por testar o metodo initUpperCase(String string).
+     * Metodo responsavel por testar o metodo initUpperCase(String string) : String.
      */
     @Test
     public void testInitUpperCase() {
@@ -124,7 +124,7 @@ public class FunctStringTest {
     }
     
     /**
-     * Metodo responsavel por testar o metodo getInitUpperCase(String string).
+     * Metodo responsavel por testar o metodo getInitUpperCase(String string) : String.
      */
     @Test
     public void testGetInitUpperCase() {
@@ -137,7 +137,7 @@ public class FunctStringTest {
     }
     
     /**
-     * Metodo responsavel por testar o metodo getNumeros(String string).
+     * Metodo responsavel por testar o metodo getNumeros(String string) : String.
      */
     @Test
     public void testGetNumeros() {
@@ -150,7 +150,7 @@ public class FunctStringTest {
     }
     
     /**
-     * Metodo responsavel por testar o metodo removeCharEspeciais(String string).
+     * Metodo responsavel por testar o metodo removeCharEspeciais(String string) : String.
      */
     @Test
     public void testRemoveCharEspeciais() {
@@ -163,7 +163,7 @@ public class FunctStringTest {
     }
     
     /**
-     * Metodo responsavel por testar o metodo removeCharEspeciais(String string).
+     * Metodo responsavel por testar o metodo removeCharEspeciais(String string) : String.
      */
     @Test
     public void testMd5() {
