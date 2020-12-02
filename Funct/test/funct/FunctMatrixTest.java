@@ -274,6 +274,57 @@ public class FunctMatrixTest {
     }
     
     /**
+     * Metodo responsavel por testar o metodo getPrincipalDiagonal(Integer[][] matrix) : Integer[].
+     */
+    @Test
+    public void testGetPrincipalDiagonal() {
+        assertArrayEquals(funct.getPrincipalDiagonal(new Integer[][]{}), new Integer[]{});
+        assertArrayEquals(funct.getPrincipalDiagonal(new Integer[][]{{-4}}), new Integer[]{-4});
+        assertArrayEquals(funct.getPrincipalDiagonal(new Integer[][]{{-1, 0}}), null);
+        assertArrayEquals(funct.getPrincipalDiagonal(new Integer[][]{{0, 1}, {2, 3}}), new Integer[]{0, 3});
+        assertArrayEquals(funct.getPrincipalDiagonal(new Integer[][]{{0, 1}, {2, 3}, {4, 5}}), null);
+        assertArrayEquals(funct.getPrincipalDiagonal(new Integer[][]{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}}), new Integer[]{1, 5, 9});
+    }
+    
+    /**
+     * Metodo responsavel por testar o metodo getSecondaryDiagonal(Integer[][] matrix) : Integer[].
+     */
+    @Test
+    public void testGetSecondaryDiagonal() {
+        assertArrayEquals(funct.getSecondaryDiagonal(new Integer[][]{}), new Integer[]{});
+        assertArrayEquals(funct.getSecondaryDiagonal(new Integer[][]{{-4}}), new Integer[]{-4});
+        assertArrayEquals(funct.getSecondaryDiagonal(new Integer[][]{{-1, 0}}), null);
+        assertArrayEquals(funct.getSecondaryDiagonal(new Integer[][]{{0, 1}, {2, 3}}), new Integer[]{1, 2});
+        assertArrayEquals(funct.getSecondaryDiagonal(new Integer[][]{{0, 1}, {2, 3}, {4, 5}}), null);
+        assertArrayEquals(funct.getSecondaryDiagonal(new Integer[][]{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}}), new Integer[]{3, 5, 7});
+    }
+    
+    /**
+     * Metodo responsavel por testar o metodo getTranspose(Integer[][] matrix) : Integer[][].
+     */
+    @Test
+    public void testGetTranspose() {
+        assertArrayEquals(funct.getTranspose(new Integer[][]{}), null);
+        assertArrayEquals(funct.getTranspose(new Integer[][]{{-4}}), new Integer[][]{{-4}});
+        assertArrayEquals(funct.getTranspose(new Integer[][]{{-1, 0}}), new Integer[][]{{-1}, {0}});
+        assertArrayEquals(funct.getTranspose(new Integer[][]{{-1, 0}, {2}}), null);
+        assertArrayEquals(funct.getTranspose(new Integer[][]{{0}, {1}, {2}}),  new Integer[][]{{0, 1, 2}});
+        assertArrayEquals(funct.getTranspose(new Integer[][]{{0, 0}, {0, 0}}), new Integer[][]{{0, 0}, {0, 0}});
+    }
+    
+    /**
+     * Metodo responsavel por testar o metodo getColumn(Integer[][] matrix) : Integer[].
+     */
+    @Test
+    public void testGetColumn() {
+        assertArrayEquals(funct.getColumn(new Integer[][]{}, 1), null);
+        assertArrayEquals(funct.getColumn(new Integer[][]{{-5}}, 1), null);
+        assertArrayEquals(funct.getColumn(new Integer[][]{{-1}, {0}, {2}}, 0), new Integer[]{-1, 0, 2});
+        assertArrayEquals(funct.getColumn(new Integer[][]{{-1}, {0, 5}, {2}}, 1), null);
+        assertArrayEquals(funct.getColumn(new Integer[][]{{0, 1}, {2, 3, 4}, {3, 4}}, 1), new Integer[]{1, 3, 4});
+    }
+    
+    /**
      * Metodo responsavel por testar o metodo getDeterminant(Integer[][] matrix) : Integer.
      */
     @Test

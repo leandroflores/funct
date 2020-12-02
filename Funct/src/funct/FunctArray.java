@@ -228,7 +228,7 @@ public class FunctArray {
      * @return Array em uma String.
      */
     public String getString(Integer[] array) {
-        if (array.length == 0)
+        if (array == null || array.length == 0)
             return "[]";
         String  string  = "[";
         Integer lastPos = array.length - 1;

@@ -316,6 +316,8 @@ public class FunctMatrix {
      * @return Diagonal Principal da Matriz.
      */
     public Integer[] getPrincipalDiagonal(Integer[][] matrix) {
+        if (!isSquare(matrix))
+            return null;
         Integer[] diagonal = new Integer[matrix.length];
         for (int i = 0; i < matrix.length; i++) 
                   diagonal[i] = matrix[i][i];
@@ -328,6 +330,8 @@ public class FunctMatrix {
      * @return Diagonal Secundaria da Matriz.
      */
     public Integer[] getSecondaryDiagonal(Integer[][] matrix) {
+        if (!isSquare(matrix))
+            return null;
         Integer[] diagonal = new Integer[matrix.length];
         Integer   column   = matrix.length - 1;
         for (int i = 0; i < matrix.length; i++)
@@ -341,6 +345,8 @@ public class FunctMatrix {
      * @return Transposta da Matriz.
      */
     public Integer[][] getTranspose(Integer[][] matrix) {
+        if (matrix == null || !isMatrix(matrix))
+            return null;
         Integer[][] transpose = new Integer[matrix[0].length][matrix.length];
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[0].length; j++) {
@@ -357,10 +363,17 @@ public class FunctMatrix {
      * @return Coluna da Matriz.
      */
     public Integer[] getColumn(Integer[][] matrix, Integer index) {
-        Integer[] column = new Integer[matrix.length];
-        for (int i = 0; i < matrix.length; i++)
-               column[i] = matrix[i][index];
-        return column;
+        if (matrix == null || matrix.length == 0)
+            return null;
+        Integer column[]  = new Integer[matrix.length];
+        for (int i = 0; i < matrix.length; i++) {
+            try {
+                column[i] = matrix[i][index];
+            }catch (Exception exception) {
+                return null;
+            }
+        }
+        return  column;
     }
     
     /**
@@ -410,7 +423,7 @@ public class FunctMatrix {
      * @return Matriz em uma String.
      */
     public String getString(Integer[][] matrix) {
-        if (matrix.length == 0)
+        if (matrix == null || matrix.length == 0)
             return "[]";
         String string  = "[" + funct.getString(matrix[0]);
         for (int i = 1; i < matrix.length; i++)
